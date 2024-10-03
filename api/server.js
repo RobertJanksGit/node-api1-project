@@ -8,8 +8,8 @@ server.use(express.json());
 server.post("/api/users", (req, res) => {
   const user = req.body;
   if (!user.name || !user.bio) {
-    res.status(422).json({
-      message: "name and bio required",
+    res.status(400).json({
+      message: "Please provide name and bio for the user",
     });
   } else {
     User.insert(user)
